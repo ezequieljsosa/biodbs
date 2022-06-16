@@ -1,0 +1,114 @@
+{
+  "config": {
+    "DownloadIfNew": true,
+    "CreateBK": true,
+    "Retry": 3
+  },
+  "deg": {
+    "pro": {
+      "url": "http://tubic.tju.edu.cn/deg_test/public/download/DEG10.aa.gz",
+      "dst": "deg/",
+      "postprocessing": [
+        ["makeblastdb",
+        {
+          "package": "BioDbs",
+          "function": "execute",
+          "name": "pro",
+          "template": "zcat {dst} | makeblastdb -in - -title {name}  -out {basedir}{name}"
+        }]
+      ]
+    },
+    "arc": {
+      "url": "http://tubic.tju.edu.cn/deg_test/public/download/DEG30.aa.gz",
+      "dst": "deg/",
+      "postprocessing": {
+        "makeblastdb": {
+          "name": "arc"
+        }
+      }
+    },
+    "euk": {
+      "url": "http://tubic.tju.edu.cn/deg_test/public/download/DEG20.aa.gz",
+      "dst": "deg/",
+      "postprocessing": {
+        "makeblastdb": {
+          "name": "euk"
+        }
+      }
+    }
+  },
+  "ontologies": {
+    "so": {
+      "url": "https://raw.githubusercontent.com/The-Sequence-Ontology/SO-Ontologies/master/releases/so-xp.owl/so-xp.obo",
+      "dst": "ontologies/"
+    },
+    "go": {
+      "url": "http://geneontology.org/ontology/go.obo",
+      "dst": "ontologies/"
+    },
+    "go_basic": {
+      "url": "http://geneontology.org/ontology/go-basic.obo",
+      "dst": "ontologies/"
+    },
+    "goslim": {
+      "url": "http://geneontology.org/ontology/subsets/goslim_generic.obo",
+      "dst": "ontologies/"
+    },
+    "goslim_plant": {
+      "url": "http://geneontology.org/ontology/subsets/goslim_plant.obo",
+      "dst": "ontologies/"
+    },
+    "goslim_virus": {
+      "url": "http://geneontology.org/ontology/subsets/goslim_virus.obo",
+      "dst": "ontologies/"
+    },
+    "enzclass": {
+      "url": "ftp://ftp.expasy.org/databases/enzyme/enzclass.txt",
+      "dst": "ontologies/"
+    },
+    "ec2go": {
+      "url": "http://current.geneontology.org/ontology/external2go/ec2go",
+      "dst": "ontologies/"
+    }
+  },
+  "pdb": {
+    "pdb_seq_res": {
+      "url": "ftp://ftp.rcsb.org/pub/pdb/derived_data/pdb_seqres.txt",
+      "dst": "pdb/derived_data/"
+    },
+    "pdb_entries": {
+      "url": "ftp://ftp.wwpdb.org/pub/pdb/derived_data/index/entries.idx",
+      "dst": "pdb/derived_data/",
+      "algo": "url_pdb_files = ftp://ftp.wwpdb.org/pub/pdb/data/structures/divided/pdb/"
+    }
+  },
+  "uniprot": {
+    "swissprot": {
+      "url": "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz",
+      "dst": "uniprot/"
+    },
+    "uniref50": {
+      "url": "ftp://ftp.uniprot.org/pub/databases/uniprot/uniref/uniref50/uniref50.fasta.gz",
+      "dst": "uniprot/"
+    },
+    "uniref90": {
+      "url": "ftp://ftp.uniprot.org/pub/databases/uniprot/uniref/uniref90/uniref90.fasta.gz",
+      "dst": "uniprot/"
+    },
+    "unip_idmapping": {
+      "url": "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/idmapping/idmapping.dat.gz",
+      "dst": "uniprot/"
+    }
+  },
+  "pfam": {
+    "pfam": {
+      "url": "ftp://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz",
+      "dst": "pfam/",
+      "checksum": "ftp: //ftp.ebi.ac.uk/pub/databases/Pfam/current_release/md5_checksums"
+    },
+    "pdb_pfam_mapping": {
+      "url": "http://ftp.ebi.ac.uk/pub/databases/Pfam/mappings/pdb_pfam_mapping.txt",
+      "dst": "pfam/"
+    }
+  }
+}
